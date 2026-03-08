@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenwen Luo - Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige': '#F5F1E8',
+                        'brown': '#2C2419',
+                        'yellow': '#F4D03F',
+                        'card': '#FFFDF8',
+                        'border': '#D4C9B8',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F1E8;
+            color: #2C2419;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Sticky Top Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#D4C9B8]">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl font-semibold text-[#2C2419]">Wenwen Luo</a>
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="index.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">About</a>
+                <a href="projects.html" class="text-[#2C2419] hover:text-[#F4D03F] transition-colors">Projects</a>
+                <a href="vibe-coding.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Vibe Coding</a>
+                <a href="tools.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#2C2419] mb-12">My Projects</h1>
+
+            <!-- Desktop: 3 Column Grid -->
+            <div class="hidden md:grid grid-cols-3 gap-6">
+                <!-- Project 1: Ethylene Tar Market Report -->
+                <div class="col-span-1">
+                    <!-- Card 1 -->
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
+                            <button onclick="toggleExpand('project1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="btn-text-1">Expand</span>
+                                <i id="btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Card 1 -->
+                    <div id="project1" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Ethylene Tar Market Report</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">In 2025, I led the research and writing of a 12,900-word annual market report on ethylene tar, designed for industry practitioners who rely on data to make purchasing and investment decisions.
+
+The biggest challenge was data reliability. Production capacity data from suppliers is often incomplete or confidential.
+
+To solve this, I built a dual-source validation system—conducting phone interviews with more than 20 producers and 50 downstream companies to cross-check real market circulation.
+
+Another challenge was content clarity. Industry reports can easily become dense and difficult to read.
+
+So I translated raw data into 15+ structured charts, and integrated client concerns—such as policy changes and price forecasts—into the analysis.
+
+The final result was a 25-page commercial report, covering the entire industry chain and delivering a 2026 price forecast.
+
+This project reflects how I approach content strategy: turning complex data into clear, decision-ready insights.</p>
+                        <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Galand Film Week -->
+                <div class="col-span-1">
+                    <!-- Card 2 -->
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
+                            <button onclick="toggleExpand('project2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="btn-text-2">Expand</span>
+                                <i id="btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Card 2 -->
+                    <div id="project2" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Galand Film Week</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698 followers, yet a 26% engagement rate—260 likes, 101 saves, and 80 comments.
+
+The challenge was clear:
+
+With a low-weight account, zero budget, and the National Day holiday approaching, how do we make target users actively search, save, and join?
+
+First, user segmentation：
+
+We categorized users by emotional motivation—such as thinkers seeking depth and fun-seekers looking for relaxation—and matched each group with tailored content.
+
+Second, shareability design：
+
+We created a social-friendly slogan and a strong visual hook, so users weren't just saving information—they were saving something worth sharing.
+
+Third, lightweight UGC fission：
+
+Through a "Film Talker" mechanism, users became co-creators, enabling organic reach with zero cost.
+
+This framework works well for holiday marketing, local lifestyle campaigns, community cold starts, and zero-budget growth.</p>
+                        <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Cover Letter AI Tool -->
+                <div class="col-span-1">
+                    <!-- Card 3 -->
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
+                            <button onclick="toggleExpand('project3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="btn-text-3">Expand</span>
+                                <i id="btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Card 3 -->
+                    <div id="project3" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Cover Letter AI Tool</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">While exploring freelance platforms like Upwork, I noticed a common problem：
+
+Freelancers often have less than 30 minutes to apply before a job post becomes crowded.
+
+Yet writing a strong cover letter still requires understanding the job description, structuring the message, and highlighting personal advantages.
+
+Many people try AI tools—but they end up spending even more time writing prompts and revising drafts.
+
+So I decided to build a simple solution.
+
+Instead of focusing on AI writing alone, I focused on content workflow design.
+
+I mapped the user journey—from job post to proposal—and turned it into a five-step workflow: capturing context, adjusting tone, generating drafts, reviewing with AI, and exporting the final message.
+
+During development, I also built a simple debugging workflow using GitHub and Vercel to test, deploy, and fix issues quickly.
+
+What started as a small tool became a lesson in turning user pain points into structured content systems—a mindset I apply to content strategy, product storytelling, and AI-driven content experiences.</p>
+                        <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile: Single Column -->
+            <div class="md:hidden space-y-8">
+                <!-- Project 1: Ethylene Tar Market Report -->
+                <div>
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
+                            <button onclick="toggleExpandMobile('mobile1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="mobile-btn-text-1">Expand</span>
+                                <i id="mobile-btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="mobile1" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Ethylene Tar Market Report</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">In 2025, I led the research and writing of a 12,900-word annual market report on ethylene tar, designed for industry practitioners who rely on data to make purchasing and investment decisions.
+
+The biggest challenge was data reliability. Production capacity data from suppliers is often incomplete or confidential.
+
+To solve this, I built a dual-source validation system—conducting phone interviews with more than 20 producers and 50 downstream companies to cross-check real market circulation.
+
+Another challenge was content clarity. Industry reports can easily become dense and difficult to read.
+
+So I translated raw data into 15+ structured charts, and integrated client concerns—such as policy changes and price forecasts—into the analysis.
+
+The final result was a 25-page commercial report, covering the entire industry chain and delivering a 2026 price forecast.
+
+This project reflects how I approach content strategy: turning complex data into clear, decision-ready insights.</p>
+                        <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Galand Film Week -->
+                <div>
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
+                            <button onclick="toggleExpandMobile('mobile2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="mobile-btn-text-2">Expand</span>
+                                <i id="mobile-btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="mobile2" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Galand Film Week</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698 followers, yet a 26% engagement rate—260 likes, 101 saves, and 80 comments.
+
+The challenge was clear:
+
+With a low-weight account, zero budget, and the National Day holiday approaching, how do we make target users actively search, save, and join?
+
+First, user segmentation：
+
+We categorized users by emotional motivation—such as thinkers seeking depth and fun-seekers looking for relaxation—and matched each group with tailored content.
+
+Second, shareability design：
+
+We created a social-friendly slogan and a strong visual hook, so users weren't just saving information—they were saving something worth sharing.
+
+Third, lightweight UGC fission：
+
+Through a "Film Talker" mechanism, users became co-creators, enabling organic reach with zero cost.
+
+This framework works well for holiday marketing, local lifestyle campaigns, community cold starts, and zero-budget growth.</p>
+                        <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Cover Letter AI Tool -->
+                <div>
+                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
+                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
+                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
+                            <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
+                            <button onclick="toggleExpandMobile('mobile3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                <span id="mobile-btn-text-3">Expand</span>
+                                <i id="mobile-btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="mobile3" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                        <h4 class="font-semibold text-[#2C2419] mb-3">Cover Letter AI Tool</h4>
+                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">While exploring freelance platforms like Upwork, I noticed a common problem：
+
+Freelancers often have less than 30 minutes to apply before a job post becomes crowded.
+
+Yet writing a strong cover letter still requires understanding the job description, structuring the message, and highlighting personal advantages.
+
+Many people try AI tools—but they end up spending even more time writing prompts and revising drafts.
+
+So I decided to build a simple solution.
+
+Instead of focusing on AI writing alone, I focused on content workflow design.
+
+I mapped the user journey—from job post to proposal—and turned it into a five-step workflow: capturing context, adjusting tone, generating drafts, reviewing with AI, and exporting the final message.
+
+During development, I also built a simple debugging workflow using GitHub and Vercel to test, deploy, and fix issues quickly.
+
+What started as a small tool became a lesson in turning user pain points into structured content systems—a mindset I apply to content strategy, product storytelling, and AI-driven content experiences.</p>
+                        <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                            View Details <i class="fas fa-arrow-right text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page Navigation -->
+    <div class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors font-medium">
+                <i class="fas fa-arrow-up"></i>
+                <span>Previous: About</span>
+            </a>
+            <a href="vibe-coding.html" class="flex items-center gap-2 text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors font-medium">
+                <span>Next: Vibe Coding</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8">
+            <a href="https://www.linkedin.com/in/amity-luo" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:wenwenluo130@gmail.com" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <div class="text-center mt-4 text-sm text-[#2C2419]/40">
+            © 2026 Wenwen Luo. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Desktop toggle
+        function toggleExpand(id) {
+            const element = document.getElementById(id);
+            const isHidden = element.classList.contains('hidden');
+            
+            if (id === 'project1') {
+                document.getElementById('btn-text-1').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-1').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project2') {
+                document.getElementById('btn-text-2').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-2').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project3') {
+                document.getElementById('btn-text-3').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-3').classList.toggle('rotate-180', isHidden);
+            }
+            
+            element.classList.toggle('hidden');
+        }
+
+        // Mobile toggle
+        function toggleExpandMobile(id) {
+            const element = document.getElementById(id);
+            const isHidden = element.classList.contains('hidden');
+            
+            if (id === 'mobile1') {
+                document.getElementById('mobile-btn-text-1').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('mobile-btn-icon-1').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'mobile2') {
+                document.getElementById('mobile-btn-text-2').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('mobile-btn-icon-2').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'mobile3') {
+                document.getElementById('mobile-btn-text-3').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('mobile-btn-icon-3').classList.toggle('rotate-180', isHidden);
+            }
+            
+            element.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

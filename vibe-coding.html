@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenwen Luo - Vibe Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige': '#F5F1E8',
+                        'brown': '#2C2419',
+                        'yellow': '#F4D03F',
+                        'card': '#FFFDF8',
+                        'border': '#D4C9B8',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F1E8;
+            color: #2C2419;
+        }
+        .prompt-code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Sticky Top Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#D4C9B8]">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl font-semibold text-[#2C2419]">Wenwen Luo</a>
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="index.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">About</a>
+                <a href="projects.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Projects</a>
+                <a href="vibe-coding.html" class="text-[#2C2419] hover:text-[#F4D03F] transition-colors">Vibe Coding</a>
+                <a href="tools.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#2C2419] mb-12">Vibe Coding</h1>
+
+            <!-- Video Placeholder -->
+            <div class="mb-12">
+                <div class="aspect-video bg-[#D4C9B8] rounded-xl flex items-center justify-center relative overflow-hidden">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-[#F5F1E8]/80 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-play text-2xl text-[#2C2419]/60 ml-1"></i>
+                        </div>
+                        <span class="text-[#2C2419]/40">Video Placeholder</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Introduction -->
+            <div class="mb-12">
+                <h2 class="font-semibold text-xl text-[#2C2419] mb-4">Project Introduction</h2>
+                <p class="text-[#2C2419]/70 leading-relaxed max-w-2xl whitespace-pre-line">
+Applying for jobs on UpWork often means writing a new cover letter every time—an exhausting and repetitive process.
+
+I designed Cover Letter Studio, an AI-powered workflow that helps candidates quickly generate tailored cover letters. By combining resume data, job descriptions, and optional context (like hiring manager information), the system identifies key motivation points and generates structured drafts.
+
+Users can adjust narrative style, tone, and experience level, then refine the draft with AI suggestions before exporting a polished, ATS-ready cover letter.</p>
+            </div>
+
+            <!-- Collapsible Prompts Section -->
+            <div>
+                <button onclick="togglePrompts()" class="w-full flex items-center justify-between bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-4 hover:bg-[#F5F1E8] transition-colors">
+                    <span class="font-semibold text-[#2C2419]">Prompts</span>
+                    <i id="prompts-icon" class="fas fa-chevron-down text-sm text-[#2C2419]/60 transition-transform"></i>
+                </button>
+                
+                <div id="prompts-content" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
+                    <h3 class="font-semibold text-[#2C2419] mb-4">cover letter prompt</h3>
+                    <p class="text-[#2C2419]/70 leading-relaxed mb-4">
+                        基于ui-ux-pro-max，以及下述设计文本要求，帮我制作一个依据岗位jd和个人简历生成coverletter的网页
+                    </p>
+                    <p class="text-[#2C2419]/70 leading-relaxed mb-6">
+                        设计文本要求:
+                    </p>
+                    
+                    <div class="bg-[#F5F1E8] rounded-lg p-4 mb-4">
+                        <p class="prompt-code text-sm text-[#2C2419]/80">
+一、低保真页面草图文本(Low-Fidelity Wireframe Text,完整版)
+全局
+应用名称与导航
+
+顶部栏:应用名为 Cover Letter Studio;右上显示API usage today: 0/20;旁边有一个离线模式开关(Offline mode)。离线模式说明: Run entirely locally; no network calls。
+
+左侧垂直导航:Step 0→Step 1→Step 2→Step 3→Step 4,当前步骤高亮显示。
+
+主要区域:左侧为导航区域，右侧为当前步骤内容区。底部提供"上一步"和"下一步"按钮，以及一个"导出向导"入口(模态或侧边栏形式)。
+
+Step 0|输入准备(Input Prep)
+Target JD(职位描述)
+
+多行文本框，允许粘贴文本。
+
+底部拖拽上传区域，支持导入格式:
+
+JSON、CSV、HTML、TXT、HTML片段
+
+未来扩展:PDF/Word(后端解析作为扩展)
+
+Experience Document(经历文档)
+
+支持文本输入或文件上传，解析为结构化字段。
+
+文件类型提示:JSON/CSV/HTML;HTML片段可直接导入并映射成结构化字段。
+
+Optimized Resume(目标简历)
+
+支持文本输入或上传，CSV/HTML导入选项。
+
+未来可支持PDF/HTML的混合输入。
+
+可选信息
+
+Company Culture Notes(公司文化笔记)、Hiring Manager Name(招聘经理姓名)、Special Requirements(特殊要求)
+
+提示区域
+简短提示:尽量提供结构化字段，方便后续跨字段对齐与匹配。
+
+数据模型初步映射(前端层级)
+
+JDInput:{id,title,text,language,attachments[]}
+
+ExperienceDocument:{ experiences:[{ company,role,start,end,bullets[],metrics[],skills[]}]\}
+
+OptimizedResume:{summary,coreSkills[],projects[],experience[],education[]}
+
+Step 1|战略分析(Strategic Alignment)
+Prompt: Cover Letter Strategy(战略定位)
+
+输出:Strategy Brief(战略简报)
+
+动机映射分析:对比Experience Document与JD，识别3个核心交集点(用户优势与公司需求的交汇处)
+
+UVP(Unique Value Proposition): 1个明确的独特价值主张，描述能为岗位解决的具体问题叙事弧线设计(选择以下之一，必要时可混合):
+
+问题解决型:Example:"我解决了X问题→贵司正在面临Y挑战→我能复制这个成功
+
+成长契合型:Example:"我的职业轨迹自然导向这个岗位→这是逻辑上的下一步"
+
+价值共鸣型:Example:"贵司的Z价值观与我过往做的A事深度契合
+
+Tone校准:行业类型(保守/创新/创意)决定语气;职位级别(初级/中级/高级)决定自信程度UI/UX要点
+
+Strategy Brief以卡片式区域呈现，包含:
+
+Motiviation Points(3条卡片，简要描述对JD的对接点)
+
+UVP(输入区域，直接编辑)
+
+Narrative Arc(可选的单选/组合选择)
+
+Tone& Level(下拉选择)
+
+右侧区域提供"对齐摘要":简要列出3条核心论点及其与JD的映射
+
+产出
+Strategy Brief(结构化文本+摘要)
+
+叙事逻辑选型、3条核心论点、 UVP陈述
+
+Step 2| Draft& Fit Check(Draft& Fit Check)
+
+Prompt: Cover Letter Composer(正文生成)
+
+生成规则
+
+语言与长度:英文400-500词/中文600-800字;约3-4段
+
+结构:Hook→Proof→Bridge→Ask
+
+Hook:具体、非通用的开场，提及具体项目、公司新闻或共同联系人
+
+Proof: 2-3个具体经历，量化成果，直接回应 JD的关键要求
+
+Bridge:阐述为何是该公司，展示研究深度
+
+Ask:专业、自信的结尾，请求面试
+
+匹配度检查(输出一览)
+
+JD关键词覆盖率:目标大于等于70%
+
+硬技能映射:JD要求的硬技能在信中有证据
+
+文化契合信号:引用公司价值观的次数
+
+致命错误扫描:
+
+是否出现"Dear Hiring Manager"(若用户未提供姓名，标记为需要补充)
+
+是否包含薪资期望(除非JD要求，否则标记为删除)
+
+是否存在拼写错误/公司名错误
+
+结论:可直接发送/需微调/战略重构建议
+
+UI/UX要点
+
+左侧显示Draft Cover Letter草稿(英文主路，中文等效版本可切换显示)
+
+右侧显示 Fit Check指标(关键词覆盖率、硬技能证据、文化信号、致命错误)
+
+顶部工具区: Quick Rewrite、 Language Switch(英/中切换)
+
+产出
+
+Draft Cover Letter(英文/中文版本切换)
+
+Fit Check报告(可视化指标、简要结论)
+
+Step 3| Diagnostic Review(Diagnostic Review)
+
+Prompt: Cover Letter Critique
+
+侧边栏批评
+
+等级与颜色:致命、重要、微瑕
+
+类型:内容错误、策略失误、优化建议
+
+示例:如"第二段声称管理10人团队但经历文档无证据"
+
+可执行修改文本
+
+每条批评均附带可直接复制替换的文本
+
+用户操作
+
+"应用并迭代":基于补充信息重新生成
+
+"最终润色":进入格式与语言润色阶段
+
+UI/UX要点
+
+批评面板清晰、可滚动，并提供替换文本按钮
+
+产出
+
+修改建议文本与替换句子，便于快速实现迭代
+
+Step 4| Polish& Export(Polish& Export)
+
+Prompt: Final Polish
+
+ATS与可读性优化
+
+确保无表格、无页眉页脚，纯文本友好
+
+检查可读性分数(Flesch Reading Ease>50)
+
+联系信息完整且专业
+
+输出格式
+
+纯文本版(ATS直接粘贴)
+
+简单排版版(适用于邮件正文/简单文档)
+
+邮件模板版(如需发送邮件，包含主题行和附件说明)
+
+导出选项:TXT、HTML、MD;未来可扩展为DOCX/PDF
+
+语言切换
+
+全局支持英文主路+中文等效版本
+
+导出向导入口
+
+在同一界面以模态呈现导出向导，提供粘贴提示与复制按钮导出文本
+
+导出文本遵循ATS的纯文本格式优先，确保粘贴无格式干扰
+
+二、导出向导文本草案(Export Wizard Text Draft,中文版本)
+导出向导(Export Wizard)中文文本草案
+
+模态步骤(Modal Steps) Step 1: Pick Format
+
+选项:TXT(默认),HTML,MDStep2:Language
+
+选项:English(默认)/Chinese Step 3: Output Preferences
+
+选项:ATS-ready plain text(默认勾选)
+
+可选:在导出文本中包含一个简短的主题行或邮件头部，便于直接发送邮件Step4:Action
+
+按钮:Copy to clipboard, Download(文件名如 cover-letter.txt/ cover-letter.html/ cover-letter.md)
+
+导出成功提示
+
+"Export complete. Your ATS-ready plain text is ready to paste."
+
+"If you chose a formatted version, you can copy from the preview or download the file."
+
+复制示例文本(可直接粘贴的示例格式)
+
+ATS纯文本示例(英文主路):
+
+Subject:[Position Title] Application
+
+Dear Hiring Manager,…
+
+[正文主体，按Step2生成的Draft内容]
+
+Sincerely,[Your Name]
+
+如果需要中文版本导出，统一文本在同一导出流程中切换文本即可。
+
+三、交付文档的设计与实现规范要点(Design Spec概要，供Alvibe coding使用)目标
+快速搭建一个可交互的低保真UI草图文本环境，便于你以AI驱动的方式自我迭代并落地实现。
+
+主要文本要点
+
+全局文案保持简洁、清晰，关键按钮与区域用英文文本(符合统一英文文案风格)，辅以中文释义仅作内部理解。
+
+组件与布局要点(用于后续实现对齐)
+
+顶部 HeaderBar:显示应用名、API usage、Offline开关
+
+Stepper:显示Step 0-4的步骤与进度
+
+Input Panels: JDPanel、ExperiencePanel、ResumePanel，含文本框、上传区域、导入格式选择
+
+Strategy Brief区域: Motivation Points、 UVP、 Narrative Arc、 Tone
+
+Draft Editor:DraftCoverLetter(英文主路)、中文等效切换
+
+Fit Meter:关键词覆盖、硬技能证据、文化信号、致命错误
+
+Critique Panel:颜色标签、替换文本
+
+Export Panel/Modal:导出格式、语言切换、复制与下载按钮
+
+数据映射与字段
+
+JDInput、ExperienceDocument、OptimizedResume的基础字段及其在Strategy/Draft中的映射关系
+
+StrategyBrief、DraftCoverLetter、CritiqueNotes、ExportPlan的中间对象
+
+UX约束
+
+本地存储草稿(localStorage/sessionStorage)
+
+脱敏逻辑:Hiring Manager姓名在输出中以[redacted]显示
+
+离线模式开关在 UI中有清晰状态与说明
+
+辅助文本模板(初稿)
+
+Strategy、Draft、Critique、Polish的提示模板文本，统一英文为主，确保AI识别友好
+
+验收要点
+
+低保真文本覆盖Step0-Step4的核心UI架构与字段要点
+
+导出向导文本草案可直接用于UI原型
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page Navigation -->
+    <div class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between">
+            <a href="projects.html" class="flex items-center gap-2 text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors font-medium">
+                <i class="fas fa-arrow-up"></i>
+                <span>Previous: Projects</span>
+            </a>
+            <a href="tools.html" class="flex items-center gap-2 text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors font-medium">
+                <span>Next: Tools</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8">
+            <a href="https://www.linkedin.com/in/amity-luo" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:wenwenluo130@gmail.com" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <div class="text-center mt-4 text-sm text-[#2C2419]/40">
+            © 2026 Wenwen Luo. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function togglePrompts() {
+            const content = document.getElementById('prompts-content');
+            const icon = document.getElementById('prompts-icon');
+            const isHidden = content.classList.contains('hidden');
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180', isHidden);
+        }
+    </script>
+</body>
+</html>

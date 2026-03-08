@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wenwen Luo - Tools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'beige': '#F5F1E8',
+                        'brown': '#2C2419',
+                        'yellow': '#F4D03F',
+                        'card': '#FFFDF8',
+                        'border': '#D4C9B8',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F1E8;
+            color: #2C2419;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Sticky Top Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#D4C9B8]">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-serif text-xl font-semibold text-[#2C2419]">Wenwen Luo</a>
+            <div class="flex gap-8 text-sm font-medium">
+                <a href="index.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">About</a>
+                <a href="projects.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Projects</a>
+                <a href="vibe-coding.html" class="text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors">Vibe Coding</a>
+                <a href="tools.html" class="text-[#2C2419] hover:text-[#F4D03F] transition-colors">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#2C2419] mb-12">AI Tools I Use</h1>
+
+            <!-- Tools Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+                <!-- ChatGPT -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">ChatGPT</h3>
+                    <p class="text-sm text-[#2C2419]/60">AI Assistant</p>
+                </div>
+
+                <!-- Google AI Studio -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-google text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">Google AI Studio</h3>
+                    <p class="text-sm text-[#2C2419]/60">AI Development</p>
+                </div>
+
+                <!-- OpenCode -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">OpenCode</h3>
+                    <p class="text-sm text-[#2C2419]/60">AI Coding</p>
+                </div>
+
+                <!-- Vercel -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-cloud text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">Vercel</h3>
+                    <p class="text-sm text-[#2C2419]/60">Deployment</p>
+                </div>
+
+                <!-- GitHub -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fab fa-github text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">GitHub</h3>
+                    <p class="text-sm text-[#2C2419]/60">Version Control</p>
+                </div>
+
+                <!-- Kimi -->
+                <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-[#F5F1E8] rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-moon text-2xl text-[#2C2419]"></i>
+                    </div>
+                    <h3 class="font-semibold text-[#2C2419] mb-1">Kimi</h3>
+                    <p class="text-sm text-[#2C2419]/60">AI Assistant</p>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="border-t border-[#D4C9B8] pt-12">
+                <h2 class="font-serif text-2xl font-bold text-[#2C2419] mb-8 text-center">Contact</h2>
+                
+                <div class="flex justify-center gap-8">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/amity-luo" target="_blank" class="flex flex-col items-center gap-2 group">
+                        <div class="w-16 h-16 bg-[#FFFDF8] border border-[#D4C9B8] rounded-full flex items-center justify-center group-hover:border-[#F4D03F] transition-colors">
+                            <i class="fab fa-linkedin text-2xl text-[#2C2419] group-hover:text-[#F4D03F] transition-colors"></i>
+                        </div>
+                        <span class="text-sm text-[#2C2419]/70">LinkedIn</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:wenwenluo130@gmail.com" class="flex flex-col items-center gap-2 group">
+                        <div class="w-16 h-16 bg-[#FFFDF8] border border-[#D4C9B8] rounded-full flex items-center justify-center group-hover:border-[#F4D03F] transition-colors">
+                            <i class="fas fa-envelope text-2xl text-[#2C2419] group-hover:text-[#F4D03F] transition-colors"></i>
+                        </div>
+                        <span class="text-sm text-[#2C2419]/70">Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Page Navigation -->
+    <div class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-start">
+            <a href="vibe-coding.html" class="flex items-center gap-2 text-[#2C2419]/70 hover:text-[#F4D03F] transition-colors font-medium">
+                <i class="fas fa-arrow-up"></i>
+                <span>Previous: Vibe Coding</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#D4C9B8] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex justify-center gap-8">
+            <a href="https://www.linkedin.com/in/amity-luo" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com" target="_blank" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:wenwenluo130@gmail.com" class="text-[#2C2419]/60 hover:text-[#F4D03F] transition-colors text-xl">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <div class="text-center mt-4 text-sm text-[#2C2419]/40">
+            © 2026 Wenwen Luo. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
