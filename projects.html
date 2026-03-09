@@ -31,6 +31,58 @@
             background-color: #F5F1E8;
             color: #2C2419;
         }
+        
+        /* Lightbox styles */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 36, 25, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        #lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #F5F1E8;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        
+        #lightbox-close:hover {
+            color: #F4D03F;
+        }
+        
+        .project-card-image {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .project-card-image:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -59,7 +111,7 @@
                     <!-- Card 1 -->
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/annual.png" class="project-card-image w-full h-full object-cover" alt="Ethylene Tar Market Report">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
@@ -98,7 +150,7 @@ This project reflects how I approach content strategy: turning complex data into
                     <!-- Card 2 -->
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/XHS.png" class="project-card-image w-full h-full object-cover" alt="Galand Film Week">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
@@ -143,7 +195,7 @@ This framework works well for holiday marketing, local lifestyle campaigns, comm
                     <!-- Card 3 -->
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/medium.png" class="project-card-image w-full h-full object-cover" alt="Cover Letter AI Tool">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
@@ -188,7 +240,7 @@ What started as a small tool became a lesson in turning user pain points into st
                 <div>
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/annual.png" class="project-card-image w-full h-full object-cover" alt="Ethylene Tar Market Report">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
@@ -224,7 +276,7 @@ This project reflects how I approach content strategy: turning complex data into
                 <div>
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/XHS.png" class="project-card-image w-full h-full object-cover" alt="Galand Film Week">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
@@ -266,7 +318,7 @@ This framework works well for holiday marketing, local lifestyle campaigns, comm
                 <div>
                     <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
                         <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <span class="text-[#2C2419]/40">Image Placeholder</span>
+                            <img src="images/medium.png" class="project-card-image w-full h-full object-cover" alt="Cover Letter AI Tool">
                         </div>
                         <div class="p-4">
                             <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
@@ -337,7 +389,48 @@ What started as a small tool became a lesson in turning user pain points into st
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Enlarged project image">
+    </div>
+
     <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const projectImages = document.querySelectorAll('.project-card-image');
+        
+        // Open lightbox
+        projectImages.forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        lightboxClose.addEventListener('click', closeLightbox);
+        
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
         // Desktop toggle
         function toggleExpand(id) {
             const element = document.getElementById(id);
