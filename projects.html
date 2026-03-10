@@ -84,6 +84,11 @@
             opacity: 0.9;
         }
         
+        /* Ensure cards expand independently */
+        #page-en .grid > div, #page-zh .grid > div {
+            align-self: flex-start;
+        }
+        
         /* Language toggle */
         .lang-toggle {
             position: fixed;
@@ -162,7 +167,7 @@
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
-                                <button onclick="toggleExpand('project1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project1', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-1">Expand</span>
                                     <i id="btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -197,7 +202,7 @@ This project reflects how I approach content strategy: turning complex data into
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
-                                <button onclick="toggleExpand('project2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project2', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-2">Expand</span>
                                     <i id="btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -238,7 +243,7 @@ This framework works well for holiday marketing, local lifestyle campaigns, comm
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
-                                <button onclick="toggleExpand('project3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project3', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-3">Expand</span>
                                     <i id="btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -282,7 +287,7 @@ What started as a small tool became a lesson in turning user pain points into st
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">乙烯焦油市场报告</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">将行业数据转化为战略内容</p>
-                                <button onclick="toggleExpand('project1-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project1-zh', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-1-zh">展开</span>
                                     <i id="btn-icon-1-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -313,7 +318,7 @@ What started as a small tool became a lesson in turning user pain points into st
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">聚岛电影周</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">用内容设计解决用户情绪</p>
-                                <button onclick="toggleExpand('project2-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project2-zh', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-2-zh">展开</span>
                                     <i id="btn-icon-2-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -346,7 +351,7 @@ What started as a small tool became a lesson in turning user pain points into st
                             <div class="p-4 flex flex-col flex-grow">
                                 <h3 class="font-semibold text-lg text-[#2C2419] mb-2">求职信 AI 工具</h3>
                                 <p class="text-sm text-[#2C2419]/70 mb-4">一位内容工作流程创作者的故事</p>
-                                <button onclick="toggleExpand('project3-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                <button onclick="toggleExpand('project3-zh', event)" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
                                     <span id="btn-text-3-zh">展开</span>
                                     <i id="btn-icon-3-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
                                 </button>
@@ -453,8 +458,10 @@ What started as a small tool became a lesson in turning user pain points into st
             }, 400);
         }
 
-        // Card expand toggle (EN)
-        function toggleExpand(id) {
+        // Card expand toggle
+        function toggleExpand(id, event) {
+            if (event) event.stopPropagation();
+            console.log('Toggling:', id);
             const element = document.getElementById(id);
             const isHidden = element.classList.contains('hidden');
             
