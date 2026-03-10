@@ -83,11 +83,58 @@
         .project-card-image:hover {
             opacity: 0.9;
         }
+        
+        /* Language toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 50;
+            display: flex;
+            gap: 4px;
+            background: #FFFDF8;
+            padding: 4px;
+            border-radius: 9999px;
+            border: 1px solid #D4C9B8;
+        }
+        
+        .lang-toggle button {
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-medium;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-toggle button.active-zh {
+            background: #F4D03F;
+            color: #2C2419;
+        }
+        
+        .lang-toggle button:not(.active-zh) {
+            background: transparent;
+            color: #2C2419;
+        }
+        
+        .lang-toggle button:hover {
+            background: #F5F1E8;
+        }
+        
+        /* Page transition */
+        .page-content {
+            transition: opacity 0.4s ease;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="btn-page-en" onclick="togglePageLang('en')" class="active-zh">EN</button>
+        <button id="btn-page-zh" onclick="togglePageLang('zh')">文</button>
+    </div>
+
     <!-- Sticky Top Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#D4C9B8]">
+    <nav class="sticky top-0 z-40 bg-[#F5F1E8]/95 backdrop-blur-sm border-b border-[#D4C9B8]">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="font-serif text-xl font-semibold text-[#2C2419]">Wenwen Luo</a>
             <div class="flex gap-8 text-sm font-medium">
@@ -102,31 +149,27 @@
     <!-- Main Content -->
     <main class="flex-grow">
         <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
-            <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#2C2419] mb-12">My Projects</h1>
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-[#2C2419] mb-12 text-center">My Projects</h1>
 
-            <!-- Desktop: 3 Column Grid -->
-            <div class="hidden md:grid grid-cols-3 gap-6">
-                <!-- Project 1: Ethylene Tar Market Report -->
-                <div class="col-span-1">
-                    <!-- Card 1 -->
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/annual.png" class="project-card-image w-full h-full object-cover" alt="Ethylene Tar Market Report">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
-                            <button onclick="toggleExpand('project1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="btn-text-1">Expand</span>
-                                <i id="btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Expanded Card 1 -->
-                    <div id="project1" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Ethylene Tar Market Report</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">In 2025, I led the research and writing of a 12,900-word annual market report on ethylene tar, designed for industry practitioners who rely on data to make purchasing and investment decisions.
+            <!-- English Page -->
+            <div id="page-en" class="page-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                    <!-- Card 1: Annual Report -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/annual.png" class="project-card-image w-full h-full object-cover" alt="Ethylene Tar Market Report">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
+                                <button onclick="toggleExpand('project1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-1">Expand</span>
+                                    <i id="btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project1" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">In 2025, I led the research and writing of a 12,900-word annual market report on ethylene tar, designed for industry practitioners who rely on data to make purchasing and investment decisions.
 
 The biggest challenge was data reliability. Production capacity data from suppliers is often incomplete or confidential.
 
@@ -139,33 +182,29 @@ So I translated raw data into 15+ structured charts, and integrated client conce
 The final result was a 25-page commercial report, covering the entire industry chain and delivering a 2026 price forecast.
 
 This project reflects how I approach content strategy: turning complex data into clear, decision-ready insights.</p>
-                        <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
+                                    <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        View on Notion <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Project 2: Galand Film Week -->
-                <div class="col-span-1">
-                    <!-- Card 2 -->
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/XHS.png" class="project-card-image w-full h-full object-cover" alt="Galand Film Week">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
-                            <button onclick="toggleExpand('project2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="btn-text-2">Expand</span>
-                                <i id="btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Expanded Card 2 -->
-                    <div id="project2" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Galand Film Week</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698 followers, yet a 26% engagement rate—260 likes, 101 saves, and 80 comments.
+                    <!-- Card 2: Xiaohongshu -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/XHS.png" class="project-card-image w-full h-full object-cover" alt="Galand Film Week">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
+                                <button onclick="toggleExpand('project2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-2">Expand</span>
+                                    <i id="btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project2" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698 followers, yet a 26% engagement rate—260 likes, 101 saves, and 80 comments.
 
 The challenge was clear:
 
@@ -184,33 +223,29 @@ Third, lightweight UGC fission：
 Through a "Film Talker" mechanism, users became co-creators, enabling organic reach with zero cost.
 
 This framework works well for holiday marketing, local lifestyle campaigns, community cold starts, and zero-budget growth.</p>
-                        <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
+                                    <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        View on Xiaohongshu <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                <!-- Project 3: Cover Letter AI Tool -->
-                <div class="col-span-1">
-                    <!-- Card 3 -->
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/medium.png" class="project-card-image w-full h-full object-cover" alt="Cover Letter AI Tool">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
-                            <button onclick="toggleExpand('project3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="btn-text-3">Expand</span>
-                                <i id="btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Expanded Card 3 -->
-                    <div id="project3" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Cover Letter AI Tool</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">While exploring freelance platforms like Upwork, I noticed a common problem：
+                    <!-- Card 3: Medium -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/medium.png" class="project-card-image w-full h-full object-cover" alt="Cover Letter AI Tool">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
+                                <button onclick="toggleExpand('project3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-3">Expand</span>
+                                    <i id="btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project3" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">While exploring freelance platforms like Upwork, I noticed a common problem：
 
 Freelancers often have less than 30 minutes to apply before a job post becomes crowded.
 
@@ -227,131 +262,120 @@ I mapped the user journey—from job post to proposal—and turned it into a fiv
 During development, I also built a simple debugging workflow using GitHub and Vercel to test, deploy, and fix issues quickly.
 
 What started as a small tool became a lesson in turning user pain points into structured content systems—a mindset I apply to content strategy, product storytelling, and AI-driven content experiences.</p>
-                        <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
+                                    <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        Read on Medium <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
 
-            <!-- Mobile: Single Column -->
-            <div class="md:hidden space-y-8">
-                <!-- Project 1: Ethylene Tar Market Report -->
-                <div>
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/annual.png" class="project-card-image w-full h-full object-cover" alt="Ethylene Tar Market Report">
+            <!-- Chinese Page -->
+            <div id="page-zh" class="page-content hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                    <!-- Card 1: 年报 -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/年报.png" class="project-card-image w-full h-full object-cover" alt="乙烯焦油市场报告">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">乙烯焦油市场报告</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">将行业数据转化为战略内容</p>
+                                <button onclick="toggleExpand('project1-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-1-zh">展开</span>
+                                    <i id="btn-icon-1-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project1-zh" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">2025 年，我主导完成了一份12900 字乙烯焦油年度市场报告的全流程调研与撰写，报告面向依托数据进行采购与投资决策的行业专业人士。
+
+项目核心难点在于数据可靠性：企业产能信息普遍不完整，且核心数据多属商业机密。为此，我建立双源交叉验证体系，通过电话访谈20 余家生产企业与50 余家下游企业，对市场真实供需与流通情况进行交叉核验。
+
+另一挑战是提升报告可读性：行业报告常因内容庞杂而晦涩难懂。我将原始数据转化为15 + 份结构化图表，并将政策变化，价格预测等客户核心关切点融入分析框架。
+
+最终形成25 页商用正式报告，完整覆盖全产业链分析，并提出2026 年价格预测。
+
+该项目体现了我的内容策略能力，能够将复杂数据转化为清晰、可直接支撑决策的专业洞察。</p>
+                                    <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        在 Notion 上查看 <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Ethylene Tar Market Report</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">Turning Industry Data into Strategic Content</p>
-                            <button onclick="toggleExpandMobile('mobile1')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="mobile-btn-text-1">Expand</span>
-                                <i id="mobile-btn-icon-1" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
+
+                    <!-- Card 2: 小红书 -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/小红书.png" class="project-card-image w-full h-full object-cover" alt="聚岛电影周">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">聚岛电影周</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">用内容设计解决用户情绪</p>
+                                <button onclick="toggleExpand('project2-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-2-zh">展开</span>
+                                    <i id="btn-icon-2-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project2-zh" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698粉丝 → 26%互动率（260赞、101收藏、80评论）
+
+小账号、零预算、国庆假期——如何让目标用户主动搜索、收藏、到场？
+
+1.性格切片。把用户按情绪需求分类，比如'思考型要深度、乐子型要轻松'，每个类型匹配专属内容主题。
+
+2.预埋传播点。设计一句能发朋友圈的金句+一套视觉锤，让用户收藏的不是信息，是社交货币。
+
+3.轻UGC裂变。用'影谈客'机制把用户变成共创者，零成本扩大传播。
+
+适用于节日营销 · 本地生活 · 社群冷启动 · 零预算增长</p>
+                                    <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        在小红书查看 <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div id="mobile1" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Ethylene Tar Market Report</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">In 2025, I led the research and writing of a 12,900-word annual market report on ethylene tar, designed for industry practitioners who rely on data to make purchasing and investment decisions.
 
-The biggest challenge was data reliability. Production capacity data from suppliers is often incomplete or confidential.
+                    <!-- Card 3: Medium -->
+                        <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden w-full flex flex-col">
+                            <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center overflow-hidden">
+                                <img src="images/medium图片.png" class="project-card-image w-full h-full object-cover" alt="求职信 AI 工具">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-semibold text-lg text-[#2C2419] mb-2">求职信 AI 工具</h3>
+                                <p class="text-sm text-[#2C2419]/70 mb-4">一位内容工作流程创作者的故事</p>
+                                <button onclick="toggleExpand('project3-zh')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline mt-auto">
+                                    <span id="btn-text-3-zh">展开</span>
+                                    <i id="btn-icon-3-zh" class="fas fa-chevron-down text-sm transition-transform"></i>
+                                </button>
+                            </div>
+                            <div id="project3-zh" class="hidden px-4 pb-4">
+                                <div class="border-t border-[#D4C9B8] pt-4">
+                                    <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">在浏览 Upwork 等自由职业平台时，我发现了一个普遍痛点：
 
-To solve this, I built a dual-source validation system—conducting phone interviews with more than 20 producers and 50 downstream companies to cross-check real market circulation.
+用户申请岗位需要发送求职信，但投递黄金窗口期往往不足 30 分钟，一旦错过，申请的成功率会迅速降低。
 
-Another challenge was content clarity. Industry reports can easily become dense and difficult to read.
+可一封有说服力的求职信，既要精准解读岗位需求、梳理信息结构，又要突出个人核心优势，本就耗时耗力。
 
-So I translated raw data into 15+ structured charts, and integrated client concerns—such as policy changes and price forecasts—into the analysis.
+不少人尝试借助 AI 工具提速，却反而陷入反复编写提示词、修改初稿的内耗中，效率不升反降。
 
-The final result was a 25-page commercial report, covering the entire industry chain and delivering a 2026 price forecast.
+于是我决定打造一款轻量化解决方案：
 
-This project reflects how I approach content strategy: turning complex data into clear, decision-ready insights.</p>
-                        <a href="https://www.notion.so/2025-Ethylene-Tar-Annual-Market-Analysis-Report-31d7585e08f480979ddcf0bc154efe0e?source=copy_link" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
+我没有局限于 AI 写作本身，而是将重心放在内容工作流程的设计上。
 
-                <!-- Project 2: Galand Film Week -->
-                <div>
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/XHS.png" class="project-card-image w-full h-full object-cover" alt="Galand Film Week">
+我完整梳理了用户从看到招聘信息到提交申请的全流程，将其提炼为一套五步标准化流程：捕捉背景信息、调整表达语气、生成初稿、AI 辅助审核、导出最终文案。
+
+开发过程中，我还借助 GitHub 与 Vercel 搭建了简易调试流程，实现快速测试、部署与问题修复，保障工具高效迭代。
+
+这款网站的制作经历，让我真正掌握了将用户痛点转化为结构化内容系统的核心能力。此外，我也能够将这套思维灵活运用到内容策略、产品叙事，以及 AI 驱动的内容体验设计等工作中。</p>
+                                    <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
+                                        在 Medium 阅读 <i class="fas fa-arrow-right text-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Galand Film Week</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">Solving User Demand Through Content Design</p>
-                            <button onclick="toggleExpandMobile('mobile2')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="mobile-btn-text-2">Expand</span>
-                                <i id="mobile-btn-icon-2" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="mobile2" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Galand Film Week</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">1,698 followers, yet a 26% engagement rate—260 likes, 101 saves, and 80 comments.
-
-The challenge was clear:
-
-With a low-weight account, zero budget, and the National Day holiday approaching, how do we make target users actively search, save, and join?
-
-First, user segmentation：
-
-We categorized users by emotional motivation—such as thinkers seeking depth and fun-seekers looking for relaxation—and matched each group with tailored content.
-
-Second, shareability design：
-
-We created a social-friendly slogan and a strong visual hook, so users weren't just saving information—they were saving something worth sharing.
-
-Third, lightweight UGC fission：
-
-Through a "Film Talker" mechanism, users became co-creators, enabling organic reach with zero cost.
-
-This framework works well for holiday marketing, local lifestyle campaigns, community cold starts, and zero-budget growth.</p>
-                        <a href="http://xhslink.com/o/9pYSdbZPfx8" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Cover Letter AI Tool -->
-                <div>
-                    <div class="bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl overflow-hidden">
-                        <div class="aspect-video bg-[#D4C9B8] flex items-center justify-center">
-                            <img src="images/medium.png" class="project-card-image w-full h-full object-cover" alt="Cover Letter AI Tool">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold text-lg text-[#2C2419] mb-2">Cover Letter AI Tool</h3>
-                            <p class="text-sm text-[#2C2419]/70 mb-4">A Builder Story About Content Workflow</p>
-                            <button onclick="toggleExpandMobile('mobile3')" class="flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                                <span id="mobile-btn-text-3">Expand</span>
-                                <i id="mobile-btn-icon-3" class="fas fa-chevron-down text-sm transition-transform"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div id="mobile3" class="hidden mt-4 bg-[#FFFDF8] border border-[#D4C9B8] rounded-xl p-6">
-                        <h4 class="font-semibold text-[#2C2419] mb-3">Cover Letter AI Tool</h4>
-                        <p class="text-sm text-[#2C2419]/70 mb-4 whitespace-pre-line">While exploring freelance platforms like Upwork, I noticed a common problem：
-
-Freelancers often have less than 30 minutes to apply before a job post becomes crowded.
-
-Yet writing a strong cover letter still requires understanding the job description, structuring the message, and highlighting personal advantages.
-
-Many people try AI tools—but they end up spending even more time writing prompts and revising drafts.
-
-So I decided to build a simple solution.
-
-Instead of focusing on AI writing alone, I focused on content workflow design.
-
-I mapped the user journey—from job post to proposal—and turned it into a five-step workflow: capturing context, adjusting tone, generating drafts, reviewing with AI, and exporting the final message.
-
-During development, I also built a simple debugging workflow using GitHub and Vercel to test, deploy, and fix issues quickly.
-
-What started as a small tool became a lesson in turning user pain points into structured content systems—a mindset I apply to content strategy, product storytelling, and AI-driven content experiences.</p>
-                        <a href="https://medium.com/@wenwenluo130/how-i-built-an-ai-cover-letter-tool-based-on-real-user-needs-3d101a44635f" target="_blank" class="inline-flex items-center gap-2 text-[#F4D03F] font-medium hover:underline">
-                            View Case Link <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -396,13 +420,73 @@ What started as a small tool became a lesson in turning user pain points into st
     </div>
 
     <script>
+        // Global language toggle
+        function togglePageLang(lang) {
+            const pageEn = document.getElementById('page-en');
+            const pageZh = document.getElementById('page-zh');
+            const btnEn = document.getElementById('btn-page-en');
+            const btnZh = document.getElementById('btn-page-zh');
+            
+            // Update button styles
+            if (lang === 'zh') {
+                btnEn.classList.remove('active-zh');
+                btnZh.classList.add('active-zh');
+            } else {
+                btnZh.classList.remove('active-zh');
+                btnEn.classList.add('active-zh');
+            }
+            
+            // Fade transition
+            pageEn.style.opacity = '0';
+            pageZh.style.opacity = '0';
+            
+            setTimeout(() => {
+                if (lang === 'zh') {
+                    pageEn.classList.add('hidden');
+                    pageZh.classList.remove('hidden');
+                } else {
+                    pageZh.classList.add('hidden');
+                    pageEn.classList.remove('hidden');
+                }
+                pageEn.style.opacity = '1';
+                pageZh.style.opacity = '1';
+            }, 400);
+        }
+
+        // Card expand toggle (EN)
+        function toggleExpand(id) {
+            const element = document.getElementById(id);
+            const isHidden = element.classList.contains('hidden');
+            
+            if (id === 'project1') {
+                document.getElementById('btn-text-1').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-1').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project2') {
+                document.getElementById('btn-text-2').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-2').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project3') {
+                document.getElementById('btn-text-3').textContent = isHidden ? 'Collapse' : 'Expand';
+                document.getElementById('btn-icon-3').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project1-zh') {
+                document.getElementById('btn-text-1-zh').textContent = isHidden ? '收起' : '展开';
+                document.getElementById('btn-icon-1-zh').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project2-zh') {
+                document.getElementById('btn-text-2-zh').textContent = isHidden ? '收起' : '展开';
+                document.getElementById('btn-icon-2-zh').classList.toggle('rotate-180', isHidden);
+            } else if (id === 'project3-zh') {
+                document.getElementById('btn-text-3-zh').textContent = isHidden ? '收起' : '展开';
+                document.getElementById('btn-icon-3-zh').classList.toggle('rotate-180', isHidden);
+            }
+            
+            element.classList.toggle('hidden');
+        }
+
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.getElementById('lightbox-close');
         const projectImages = document.querySelectorAll('.project-card-image');
         
-        // Open lightbox
         projectImages.forEach(img => {
             img.addEventListener('click', function() {
                 lightboxImg.src = this.src;
@@ -411,7 +495,6 @@ What started as a small tool became a lesson in turning user pain points into st
             });
         });
         
-        // Close lightbox
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
@@ -430,44 +513,6 @@ What started as a small tool became a lesson in turning user pain points into st
                 closeLightbox();
             }
         });
-
-        // Desktop toggle
-        function toggleExpand(id) {
-            const element = document.getElementById(id);
-            const isHidden = element.classList.contains('hidden');
-            
-            if (id === 'project1') {
-                document.getElementById('btn-text-1').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('btn-icon-1').classList.toggle('rotate-180', isHidden);
-            } else if (id === 'project2') {
-                document.getElementById('btn-text-2').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('btn-icon-2').classList.toggle('rotate-180', isHidden);
-            } else if (id === 'project3') {
-                document.getElementById('btn-text-3').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('btn-icon-3').classList.toggle('rotate-180', isHidden);
-            }
-            
-            element.classList.toggle('hidden');
-        }
-
-        // Mobile toggle
-        function toggleExpandMobile(id) {
-            const element = document.getElementById(id);
-            const isHidden = element.classList.contains('hidden');
-            
-            if (id === 'mobile1') {
-                document.getElementById('mobile-btn-text-1').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('mobile-btn-icon-1').classList.toggle('rotate-180', isHidden);
-            } else if (id === 'mobile2') {
-                document.getElementById('mobile-btn-text-2').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('mobile-btn-icon-2').classList.toggle('rotate-180', isHidden);
-            } else if (id === 'mobile3') {
-                document.getElementById('mobile-btn-text-3').textContent = isHidden ? 'Collapse' : 'Expand';
-                document.getElementById('mobile-btn-icon-3').classList.toggle('rotate-180', isHidden);
-            }
-            
-            element.classList.toggle('hidden');
-        }
     </script>
 </body>
 </html>
